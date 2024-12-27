@@ -340,15 +340,16 @@ public class TableFrame extends JFrame{
 
                     if(rowNum == -1){
                         String aa1 = str1.substring(0,1);
-                        String aa = str1.substring(1, str1.length());
+                        String aa = str1.substring(0, str1.length());
+
                         long bb = Long.parseLong(aa) + 1;
 
-                        String cc = aa1 + String.valueOf(bb);
+//                        String cc = aa1 + String.valueOf(bb);
 
                         tableModel.addRow(vector);
 
                         //加入表格后清除源数据
-                        idText.setText(cc);
+                        idText.setText("");
                         titleText.setText("");
                         authorText.setText("");
                     }
@@ -412,14 +413,14 @@ public class TableFrame extends JFrame{
 //				System.out.println(rowcount);
                 if(rowcount >= 0){
                     tableModel.removeRow(rowcount);
-                    String aa = table.getValueAt(rowcount, 0).toString().substring(0, 1);
-                    for(int i = rowcount; i < table.getRowCount(); i++){
-                        if(table.getValueAt(i, 0).toString().startsWith(aa)){
-                            String ee = table.getValueAt(i, 0).toString();
-                            String ee1 = aa + String.valueOf(Long.parseLong(ee.substring(1, ee.length())) - 1);
-                            table.setValueAt(ee1, i, 0);
-                        }
-                    }
+//                    String aa = table.getValueAt(rowcount+1, 0).toString().substring(0, 1);
+//                    for(int i = rowcount; i < table.getRowCount(); i++){
+//                        if(table.getValueAt(i, 0).toString().startsWith(aa)){
+//                            String ee = table.getValueAt(i, 0).toString();
+//                            String ee1 = aa + String.valueOf(Long.parseLong(ee.substring(1, ee.length())) - 1);
+//                            table.setValueAt(ee1, i, 0);
+//                        }
+//                    }
                 }
 //				table.revalidate();
             }
@@ -431,20 +432,21 @@ public class TableFrame extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println(table);
                 new PutinStorage().saveData(table);
             }
 
         });
 
-        // 查找
-        find.addActionListener(new ActionListener(){
-
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                // TODO Auto-generated method stub
-            }
-
-        });
+//        // 查找
+//        find.addActionListener(new ActionListener(){
+//
+//            @Override
+//            public void actionPerformed(ActionEvent arg0) {
+//                // TODO Auto-generated method stub
+//            }
+//
+//        });
 
         // 退出
         exit.addActionListener(new ActionListener(){

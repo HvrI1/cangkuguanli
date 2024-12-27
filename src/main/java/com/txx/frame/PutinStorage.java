@@ -26,8 +26,8 @@ public class PutinStorage {
         Connection conn;
         PreparedStatement preparedStatement;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstorage","root","123456");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstorage?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true","root","123456");
 //			if(!conn.isClosed())
 //				System.out.println("成功打开数据库");
 
@@ -43,7 +43,8 @@ public class PutinStorage {
 //				System.out.println(result.getString("id") + "\t" + result.getString("password"));
 //			}
 
-            String sql = "insert into password values('" + userName + "','" + userPassword1 + "')";
+            String sql = "insert into `password`" +
+                    "values('" + userName + "','" + userPassword1 + "')";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.executeUpdate();
 
@@ -100,7 +101,7 @@ public class PutinStorage {
 
         // TODO Auto-generated method stub
 
-        String sql_url = "jdbc:mysql://localhost:3306/bookstorage";	//数据库路径（一般都是这样写），test是数据库名称
+        String sql_url = "jdbc:mysql://localhost:3306/bookstorage?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true";	//数据库路径（一般都是这样写），test是数据库名称
         String name = "root";		//用户名
         String password = "123456";	//密码
         Connection conn;
@@ -139,7 +140,7 @@ public class PutinStorage {
     // 得到数据库表数据
     public static Vector getRows(String tableName){
 
-        String sql_url = "jdbc:mysql://localhost:3306/bookstorage";	//数据库路径（一般都是这样写），test是数据库名称
+        String sql_url = "jdbc:mysql://localhost:3306/bookstorage?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true";	//数据库路径（一般都是这样写），test是数据库名称
         String name = "root";		//用户名
         String password = "123456";	//密码
         Connection conn;
@@ -149,7 +150,7 @@ public class PutinStorage {
         Vector columnHeads = null;
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");		//连接驱动
+            Class.forName("com.mysql.cj.jdbc.Driver");		//连接驱动
             conn = DriverManager.getConnection(sql_url, name, password);	//连接数据库
 //			if(!conn.isClosed())
 //				System.out.println("成功连接数据库");
@@ -188,7 +189,7 @@ public class PutinStorage {
 
     // 得到数据库表头
     public static Vector getHead(String tableName){
-        String sql_url = "jdbc:mysql://localhost:3306/bookstorage";	//数据库路径（一般都是这样写），test是数据库名称
+        String sql_url = "jdbc:mysql://localhost:3306/bookstorage?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true";	//数据库路径（一般都是这样写），test是数据库名称
         String name = "root";		//用户名
         String password = "123456";	//密码
         Connection conn;
@@ -197,7 +198,7 @@ public class PutinStorage {
         Vector columnHeads = null;
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");		//连接驱动
+            Class.forName("com.mysql.cj.jdbc.Driver");		//连接驱动
             conn = DriverManager.getConnection(sql_url, name, password);	//连接数据库
 //			if(!conn.isClosed())
 //				System.out.println("成功连接数据库");

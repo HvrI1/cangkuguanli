@@ -76,8 +76,9 @@ public class FindBook {
         Connection conn;
         PreparedStatement preparedStatement = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstorage","root","123456");
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstorage?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true","root","123456");
 //				if(!conn.isClosed())
 //					System.out.println("成功打开数据库");
 
@@ -348,8 +349,8 @@ public class FindBook {
         Connection conn;
         PreparedStatement preparedStatement = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstorage","root","123456");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstorage?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true","root","123456");
 //					if(!conn.isClosed())
 //						System.out.println("成功打开数据库");
 

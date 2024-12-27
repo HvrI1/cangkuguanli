@@ -100,12 +100,12 @@ public class UserLoginFrame extends JFrame{
                 Connection conn;
                 PreparedStatement preparedStatement;
                 try {
-                    Class.forName("com.mysql.jdbc.Driver");
-                    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstorage","root","123456");
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstorage?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true","root","123456");
 //					if(!conn.isClosed())
 //						System.out.println("成功打开数据库");
 
-                    String sql = "select word from password where id='" + adminName.getText() + "'";
+                    String sql = "select password from password where username='" + adminName.getText() + "'";
                     preparedStatement = conn.prepareStatement(sql);
 
                     ResultSet result = preparedStatement.executeQuery();
@@ -116,7 +116,7 @@ public class UserLoginFrame extends JFrame{
                     String str1 = password.getText();
 
                     if(result.next()){
-                        String str2 = result.getString("word");
+                        String str2 = result.getString("password");
                         if(str1.equals(str2))
                             new UserInfoFrame(adminName).show();
                         else{
